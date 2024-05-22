@@ -45,7 +45,7 @@ You'll see a text file named folderPath.txt in the root directory of the project
 
 Then Run the application:
 ```sh
-node ./src/index.js
+npm start
 ```
 The files in the specified folder will be sorted by their creation date and renamed in numerical order.
 
