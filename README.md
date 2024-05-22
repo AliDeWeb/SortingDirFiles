@@ -28,7 +28,7 @@ You should see the version number of Node.js if the installation was successful.
 
 Clone this repository to your local machine:
 ```sh
-git clone https://github.com/yourusername/folder-file-sorter.git
+git clone https://github.com/AliDeWeb/SortingDirFiles.git
 ```
 Navigate to the project directory:
 ```sh
