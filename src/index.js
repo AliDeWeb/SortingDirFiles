@@ -5,6 +5,7 @@ const path = require("path");
 let configs = fs.readFileSync(`${__dirname}/configs.json`);
 configs = JSON.parse(configs);
 const folderPath = configs.dirPath;
+const sortType = configs.sortType;
 if (!folderPath.trim()) throw new Error(`Path Is Not Correct !!!`);
 if (JSON.parse(configs.makeCopy)) fs.mkdirSync(`${folderPath}/originalFiles`);
 
@@ -35,22 +36,65 @@ const makeCopy = (file, copyPath) => {
 const digitNum = generateNumberBasedOnDigits(files.length);
 if (digitNum <= 0) throw new Error(`The Folder Is Empty !!!`);
 
-const filesInfos = files.map((el, index) => {
-  if (JSON.parse(configs.makeCopy))
-    makeCopy(`${folderPath}/${el}`, `${folderPath}/originalFiles/${el}`);
-
+const initTime = (el) => {
   let file = fs.statSync(`${folderPath}/${el}`);
   const date = new Date(file.birthtime);
   const format = path.extname(el);
 
   return {
     filePath: `${folderPath}/${el}`,
-    fileDate: date.getTime(),
+    sortNum: date.getTime(),
     fileFormat: format,
   };
+};
+const updateTime = (el) => {
+  let file = fs.statSync(`${folderPath}/${el}`);
+  const date = new Date(file.mtime);
+  const format = path.extname(el);
+
+  return {
+    filePath: `${folderPath}/${el}`,
+    sortNum: date.getTime(),
+    fileFormat: format,
+  };
+};
+const size = (el) => {
+  let file = fs.statSync(`${folderPath}/${el}`);
+  const size = file.size;
+  const format = path.extname(el);
+
+  console.log(size);
+
+  return {
+    filePath: `${folderPath}/${el}`,
+    sortNum: size,
+    fileFormat: format,
+  };
+};
+
+const initialFiles = files.map((el) => {
+  if (JSON.parse(configs.makeCopy))
+    makeCopy(`${folderPath}/${el}`, `${folderPath}/originalFiles/${el}`);
+
+  switch (sortType) {
+    case "initTime":
+      return initTime(el);
+      break;
+
+    case "updateTime":
+      return updateTime(el);
+      break;
+
+    case "size":
+      return size(el);
+      break;
+
+    default:
+      throw new Error(`Wrong Type`);
+  }
 });
 
-const sortedFiles = filesInfos.sort((a, b) => a.fileDate - b.fileDate);
+const sortedFiles = initialFiles.sort((a, b) => a.sortNum - b.sortNum);
 
 sortedFiles.forEach((el, index) => {
   let fileName = `${index + 1}`.padStart(String(digitNum).length, `0`);

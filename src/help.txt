@@ -1,0 +1,5 @@
+"dirPath": "C:\\Users\\AliDeWeb\\Desktop\\pics"
+
+"makeCopy": "true" ==> // true || false
+
+"sortType": "initTime" ==> // updateTime || initTime || size
