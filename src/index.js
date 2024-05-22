@@ -2,7 +2,9 @@ const fs = require("fs");
 const path = require("path");
 
 // Paths
-const folderPath = fs.readFileSync(`./folderPath.txt`, { encoding: "utf-8" });
+let configs = fs.readFileSync(`${__dirname}/configs.json`);
+configs = JSON.parse(configs);
+const folderPath = configs.dirPath;
 if (!folderPath.trim()) throw new Error(`Path Is Not Correct !!!`);
 
 // Reading Folder Files
