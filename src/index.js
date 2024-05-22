@@ -12,7 +12,7 @@ const files = fs.readdirSync(folderPath);
 //** Generate Number Based On Digits Func **\\
 const generateNumberBasedOnDigits = (num) => {
   let digitCount;
-  if (num === 0) return false;
+  if (num === 0) return 0;
   else {
     digitCount = Math.ceil(Math.log10(num));
   }
