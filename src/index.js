@@ -1,6 +1,9 @@
 const fs = require("fs");
 const path = require("path");
 
+console.time(`timer`);
+console.log("Process Started, Please Wait And Don't Close Terminal ☺");
+
 // Paths
 let configs = fs.readFileSync(`${__dirname}/configs.json`);
 configs = JSON.parse(configs);
@@ -103,3 +106,5 @@ sortedFiles.forEach((el, index) => {
     `${folderPath}/${fileName}${el.fileFormat}`,
   );
 });
+console.log("Process Completed ☺");
+console.timeEnd(`timer`);

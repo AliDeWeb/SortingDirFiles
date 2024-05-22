@@ -1,5 +1,5 @@
 {
-  "dirPath": "C:\\Users\\AliDeWeb\\Desktop\\pics",
-  "makeCopy": "false",
-  "sortType": "size"
+  "dirPath": "Test",
+  "makeCopy": "true",
+  "sortType": "initTime"
 }
