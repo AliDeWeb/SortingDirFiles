@@ -36,7 +36,7 @@ git cd SortingDirFiles
 ```
 Install the required dependencies:
 ```sh
-Install the required dependencies:
+npm install
 ```
 
 ### 📂 Usage
