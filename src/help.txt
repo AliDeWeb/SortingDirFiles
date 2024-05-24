@@ -1,5 +1,5 @@
-"dirPath": "C:\\Users\\AliDeWeb\\Desktop\\pics"
+"dirPath": [Path]: String
 
-"makeCopy": "true" ==> // true || false
+"makeCopy": [Option]: Bool
 
-"sortType": "initTime" ==> // updateTime || initTime || size
+"sortType": [Option]: updateTime || initTime || size
